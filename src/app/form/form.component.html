@@ -1,0 +1,79 @@
+<script>$('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })</script>
+
+<div style="text-align:center; padding-bottom:25px;">
+ <!-- Modal Button-->
+  <button style="text-align:center" type="button" class="btn btn-info btn-sm " data-toggle="modal" data-target="#exampleModal">
+    Add User 
+  </button>
+ </div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+       
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form  ngNativeValidate>
+
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" minlength="2" class="form-control" [(ngModel)]="user.firstname" placeholder="Enter First Name" name="firstname" required
+                   #firstname="ngModel">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" [(ngModel)]="user.lastname" placeholder="Enter Last Name" name="lastname" required>
+          </div>
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" [(ngModel)]="user.address" placeholder="Enter Address" name="address" required>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button  type="button" (click)="registerNow()" class="btn btn-primary" name="submit" data-dismiss=""> Submit </button>
+          </div>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="result?.length > 0">
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Address</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+    <tbody>
+        <tr *ngFor="let l of result">
+            <td>{{l.firstname}}</td>
+            <td>{{l.lastname}}</td>
+            <td>{{l.address}}</td>
+            <td>
+              <button type="button" class="btn btn-default btn-sm" (click)="delete(l.id)">
+                <span class="glyphicon glyphicon-remove"></span> Remove
+              </button>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+

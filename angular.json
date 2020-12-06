@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "angular-spring"
+  "defaultProject": "angular-spring",
+  "cli": {
+    "analytics": false
+  }
 }
